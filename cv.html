@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CV - Haidar Ghazi M. P.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #ecf0f1;
+      color: #2c3e50;
+    }
+
+    .cv-container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: #ffffff;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .header {
+      background-color: #34495e;
+      color: white;
+      padding: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header .info {
+      flex: 1;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 2em;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .header p {
+      margin: 5px 0;
+    }
+
+    .profile-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid white;
+    }
+
+    .section {
+      padding: 25px 30px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .section:last-child {
+      border-bottom: none;
+    }
+
+    .section h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.4em;
+      color: #34495e;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #3498db;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .skill {
+      background: #3498db;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 20px;
+      margin: 5px 8px 5px 0;
+      font-size: 0.9em;
+    }
+
+    @media (max-width: 600px) {
+      .header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .profile-img {
+        margin-top: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="cv-container">
+  <div class="header">
+    <div class="info">
+      <h1>Haidar Ghazi Mudzakkiy Purwandaru</h1>
+      <p>Email: haidar.ghaziy2006@gmail.com</p>
+      <p>Telepon: 0897-9657-528</p>
+      <p>Alamat: Depok, Jawa Barat, Indonesia</p>
+    </div>
+    <img src="gw.jpg" alt="Foto Profil" class="profile-img">
+  </div>
+
+  <div class="section">
+    <h2>Tentang Saya</h2>
+    <p>Saya adalah Mahasiswa di STT Terpadu Nurul Fikri dari prodi Teknik Informatika semester 1, tahun 2025.</p>
+  </div>
+
+  <div class="section">
+    <h2>Pendidikan</h2>
+    <ul>
+      <li><strong>STT Terpadu Nurul Fikri</strong> - S1 Teknik Informatika (2025 - Sekarang)</li>
+      <li><strong>SMK Harapan Bangsa</strong> - TKJ (2022 - 2025)</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Pengalaman Kerja</h2>
+    <ul>
+      <li>
+        <strong>Network Engaineer</strong> - Badan Riset Dan Inovasi Nasional (Juli 2024 - Agustus 2024)<br/>
+        Bertanggung jawab atas perawatan Infrastruktur jaringan.
+      </li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Keahlian</h2>
+    <div class="skills">
+      <div class="skill">HTML</div>
+      <div class="skill">CSS</div>
+      <div class="skill">JavaScript</div>
+      <div class="skill">React.js</div>
+      <div class="skill">Node.js</div>
+      <div class="skill">Git & GitHub</div>
+      <div class="skill">Figma</div>
+      <div class="skill">Network Engaineer</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Bahasa</h2>
+    <ul>
+      <li>Bahasa Indonesia (Lancar)</li>
+      <li>Bahasa Inggris (Menengah)</li>
+    </ul>
+  </div>
+
+</div>
+
+</body>
+</html>
