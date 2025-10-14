@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Transaksi Pembayaran</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            display: flex;
+            gap: 30px;
+        }
+        .image-box {
+            flex: 1;
+            text-align: center;
+        }
+        .image-box img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border: 2px solid #ccc;
+            margin-bottom: 10px;
+        }
+        form {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        textarea {
+            height: 80px;
+            resize: none;
+        }
+        .checkbox {
+            margin: 10px 0;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #00a86b;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #008f5a;
+        }
+        small {
+            font-size: 12px;
+            color: gray;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#" onclick="showPage('input')">Beranda</a> |
+            <a href="#" onclick="showPage('input')">Buat Tautan</a> |
+            <a href="#">Riwayat Transaksi</a> |
+            <a href="#">Kebijakan</a> |
+            <a href="#">Tentang</a>
+        </nav>
+    </header>
+
+    <!-- ================== HALAMAN INPUT ================== -->
+    <main id="inputPage" class="page">
+        <div class="container">
+            <div class="image-box">
+                <img id="preview" src="" alt="Pratinjau Gambar">
+                <input type="file" id="upload" accept="image/*" onchange="previewImage(event)">
+                <label for="upload" class="btn">Unggah Gambar</label>
+            </div>
+
+            <form id="formInput">
+                <label>Judul Barang:</label>
+                <input type="text" id="judul" placeholder="Masukan Nama Barang">
+
+                <label>Deskripsi:</label>
+                <textarea id="deskripsi" placeholder="Deskripsi"></textarea>
+
+                <label>Nomor Rekening:</label>
+                <input type="text" id="rekening" placeholder="123-456-789-0">
+
+                <label>Bank:</label>
+                <select id="bank">
+                    <option>Bank BCA</option>
+                    <option>Bank Mandiri</option>
+                    <option>Bank BNI</option>
+                    <option>Bank BRI</option>
+                    <option>Bank CIMB Niaga</option>
+                </select>
+
+                <label>Nama Pemilik Rekening:</label>
+                <input type="text" id="nama" placeholder="Masukkan nama pemilik rekening">
+
+                <label>Jumlah Penerima Transaksi:</label>
+                <select id="jumlah">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                </select>
+                <small>* Jika transaksi untuk 3 orang, pilih 3 dari daftar</small>
+
+                <div class="checkbox">
+                    <label><input type="checkbox" id="kirimHp" checked> Kirim ke Nomor HP</label><br>
+                    <label><input type="checkbox" id="kirimEmail" checked> Kirim ke Email</label>
+                </div>
+
+                <label>Kirim ke Nomor HP:</label>
+                <input type="text" id="hp" placeholder="081234567890">
+
+                <label>Kirim ke Email:</label>
+                <input type="email" id="email" placeholder="email1@example.com">
+
+                <button type="button" class="btn" onclick="generateOutput()">Buat Tautan Bayar</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- ================== HALAMAN OUTPUT ================== -->
+    <main id="outputPage" class="page hidden">
+        <div class="container">
+            <div class="image-box">
+                <img id="previewOutput" src="" alt="Gambar Produk">
+            </div>
+
+            <form>
+                <label>Judul Barang:</label>
+                <input type="text" id="outJudul" readonly>
+
+                <label>Deskripsi:</label>
+                <textarea id="outDeskripsi" readonly></textarea>
+
+                <label>Total Pembayaran:</label>
+                <input type="text" id="outTotal" readonly>
+
+                <label>Dibayarkan ke Rekening:</label>
+                <input type="text" id="outRekening" readonly>
+
+                <label>Metode Pembayaran:</label>
+                <select>
+                    <option>Debit Visa</option>
+                    <option>MasterCard</option>
+                    <option>Transfer Bank</option>
+                </select>
+
+                <label>Nama Pemilik Rekening:</label>
+                <input type="text" id="outNama" readonly>
+
+                <div class="checkbox">
+                    <label><input type="checkbox" checked> Kirim ke Nomor HP</label><br>
+                    <label><input type="checkbox" checked> Kirim salinan ke Email</label>
+                </div>
+
+                <label>Kirim ke Nomor HP:</label>
+                <input type="text" id="outHp" readonly>
+
+                <label>Kirim ke Email:</label>
+                <input type="email" id="outEmail" readonly>
+
+                <button type="button" class="btn" onclick="alert('Transaksi berhasil diproses!')">Bayar Menggunakan QuidLink</button>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        // Preview gambar saat diunggah
+        function previewImage(event) {
+            const preview = document.getElementById('preview');
+            preview.src = URL.createObjectURL(event.target.files[0]);
+        }
+
+        // Ganti halaman (Input / Output)
+        function showPage(page) {
+            document.getElementById('inputPage').classList.add('hidden');
+            document.getElementById('outputPage').classList.add('hidden');
+            document.getElementById(page + 'Page').classList.remove('hidden');
+        }
+
+        // Pindahkan data dari input ke output
+        function generateOutput() {
+            document.getElementById('outJudul').value = document.getElementById('judul').value;
+            document.getElementById('outDeskripsi').value = document.getElementById('deskripsi').value;
+            document.getElementById('outRekening').value = document.getElementById('rekening').value + " (" + document.getElementById('bank').value + ")";
+            document.getElementById('outNama').value = document.getElementById('nama').value;
+            document.getElementById('outHp').value = document.getElementById('hp').value;
+            document.getElementById('outEmail').value = document.getElementById('email').value;
+            document.getElementById('outTotal').value = document.getElementById('judul').value.match(/\d[\d.,]*/g)?.[0] || "Rp -";
+
+            const inputImg = document.getElementById('preview').src;
+            document.getElementById('previewOutput').src = inputImg || "";
+
+            showPage('output');
+        }
+    </script>
+</body>
+</html>
