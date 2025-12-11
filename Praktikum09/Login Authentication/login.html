@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Authentication</title>
+</head>
+<body>
+    <h1>Login Authentication</h1>
+
+    <form onsubmit="return loginAuthentication()" id="loginForm">
+        <label for="username">Username: </label>
+        <input type="text" id="username" name="username" required><span id="errorUsername"></span>
+        
+        <br>
+        <br>
+
+        <label for="password">Password: </label>
+        <input type="password" id="password" name="password" required><span id="errorPassword"></span>
+        
+        <br>
+        <br>
+
+        <input type="submit" value="Login">
+    </form>
+
+    <br>
+    <br>
+    <div>
+        <h1 id="hasil" style="text-decoration: underline"></h1>
+        <p id="hasilUsername" style="font-size: 20px"></p>
+    
+<script src="otentikasi.js"></script>
+
+</body>
+</html>

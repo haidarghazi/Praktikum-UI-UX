@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Validation</title>
+</head>
+
+<body>
+    <h1>Form Validation</h1>
+
+    <form onsubmit="return false" id="myForm">
+        <label for="name">Nama  : </label>
+        <input type="text" id="name" placeholder="Masukkan Nama Anda" maxlength="30" required /><span
+            id="errorName"></span>
+
+        <br />
+        <br />
+
+        <label for="email">Email : </label>
+        <input type="email" id="email" placeholder="Masukkan Email Anda" required /><span id="errorEmail"></span>
+
+        <br />
+        <br />
+
+        <label for="jam">Jam Keberangkatan : </label>
+        <input type="time" id="jam" required /><span id="errorJam"></span>
+
+        <br />
+        <br />
+
+        <label for="tujuan">Tujuan Keberangkatan : </label>
+        <input type="text" id="tujuan" placeholder="Tujuan" required /><span id="errorTujuan"></span>
+
+        <br />
+        <br />
+
+        <label for="tiket">Jumlah Tiket : </label>
+        <input type="number" id="tiket" /><span id="errorTiket"></span>
+
+        <br />
+        <br />
+
+        <input type="button" onclick="formValidation()" value="Submit" />
+        <input type="button" onclick="reload()" value="Isi ulang" />
+    </form>
+
+    <br />
+    <br />
+    <div>
+        <h1 id="hasil" style="text-decoration: underline"></h1>
+        <p id="hasilName" style="font-size: 20px"></p>
+        <p id="hasilEmail" style="font-size: 20px"></p>
+        <p id="hasilJam" style="font-size: 20px"></p>
+        <p id="hasilTujuan" style="font-size: 20px"></p>
+        <p id="hasilTiket" style="font-size: 20px"></p>
+        <p id="ket"></p>
+    </div>
+
+    <script>
+        function formValidation() {
+            const nama = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const jam = document.getElementById("jam").value;
+            const tujuan = document.getElementById("tujuan").value.trim();
+            const tiket = document.getElementById("tiket").value.trim();
+
+            document.getElementById("hasil").textContent = "Validasi Data";
+
+            ["errorName","errorEmail","errorJam","errorTujuan","errorTiket"].forEach(id=>{
+                const el = document.getElementById(id);
+                el.textContent = "";
+                el.style.color = "";
+            });
+
+            let valid = true;
+
+            if (nama.toLowerCase() !== "tamamo") {
+                const el = document.getElementById("errorName");
+                el.textContent = " DATA TIDAK DITEMUKAN";
+                el.style.color = "red";
+                valid = false;
+            } else {
+                document.getElementById("hasilName").textContent = "Nama Pelanggan : " + nama;
+            }
+
+            if (email !== "tama@gmail.com") {
+                const el = document.getElementById("errorEmail");
+                el.textContent = " DATA TIDAK DITEMUKAN";
+                el.style.color = "red";
+                valid = false;
+            } else {
+                document.getElementById("hasilEmail").textContent = "Email : " + email;
+            }
+
+            if (jam !== "06:00") {
+                const el = document.getElementById("errorJam");
+                el.textContent = " DATA TIDAK DITEMUKAN";
+                el.style.color = "red";
+                valid = false;
+            } else {
+                document.getElementById("hasilJam").textContent = "Jam Keberangkatan : " + jam;
+            }
+
+            if (tujuan.toLowerCase() !== "kalimantan") {
+                const el = document.getElementById("errorTujuan");
+                el.textContent = " DATA TIDAK DITEMUKAN";
+                el.style.color = "red";
+                valid = false;
+            } else {
+                document.getElementById("hasilTujuan").textContent = "Tujuan : " + tujuan;
+            }
+
+            if (tiket !== "3") {
+                const el = document.getElementById("errorTiket");
+                el.textContent = " DATA TIDAK DITEMUKAN";
+                el.style.color = "red";
+                valid = false;
+            } else {
+                document.getElementById("hasilTiket").textContent = "Tiket : " + tiket;
+            }
+
+            return valid;
+        }
+
+        function reload() {
+            window.location.reload();
+        }
+    </script>
+</body>
+
+</html>
